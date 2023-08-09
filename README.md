@@ -1,9 +1,9 @@
 White Balance with OpenCV
 
 
-Este projeto tem como objetivo fazer o ajuste do balanço de branco e está sendo feito como trabalho final para matéria de processamento de vídeo.
+Este projeto é um SPV - Sistema de Processamento Visual que tem objetivo fazer o ajuste do balanço de branco e está sendo feito como trabalho final para matéria de Processamento de Vídeo.
 
-Antes de rodar o projeto, faça a instalação da bibliotecas dependtes através:
+Antes de rodar o projeto, faça a instalação da bibliotecas através:
 > pip install requeriments.txt
 
 Equipe:
