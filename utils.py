@@ -2,15 +2,26 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
-def set_white_balanced(setpoint: float):
+def set_white_balanced(setpoint: float = 4200):
     """
     Define o valor do balanço de branco ideal
     Args:
-        setpoint (flaot): Temperatura ideal de 0 até 9000 K
+        setpoint (flaot): Temperatura ideal de 2400 até 9900 K
     """
     ...
 
-def find_white_pixels(frame, threshold):
+def has_white_pixels(frame):
+    """
+    Args:
+        frame (image):
+        threshold ():
+    Returns:
+        True se houver pixels brancos no frame, False caso contrário.
+    """
+    ...
+
+
+def find_white_pixels():
     """
     Verifique se existem pixels brancos no frame e 
     retorna a região com pixels brancos.
@@ -20,7 +31,7 @@ def find_white_pixels(frame, threshold):
     Returns:
         ret, region_white tuple(bool, frame):
     """
-    ...
+
 
 def xyz_to_rgb():
     """
@@ -36,6 +47,7 @@ def get_percentilewhite():
     """
     ...
 
+
 def get_diff_setpoint():
     """
     Args:
@@ -43,12 +55,22 @@ def get_diff_setpoint():
     """
     ...
 
-def plot_histogram():
+def plot_histogram(frame):
     """
     Args:
-    Returns:
+        frame:
     """
-    ...
+    plt.figure(figsize= (10, 6))
+    plt.title("Histograma RGB")
+    color = ('b','g','r')
+
+    for i,col in enumerate(color):
+        histr = cv.calcHist([frame],[i],None,[256],[0,256])
+        plt.plot(histr,color = col)
+        plt.xlim([0,256])
+    plt.plot(data = frame)
+    plt.show()
+
 
 def background_subtraction():
     """
