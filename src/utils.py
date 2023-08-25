@@ -4,113 +4,15 @@ import skimage
 from scipy.optimize import minimize_scalar
 import matplotlib.pyplot as plt
 
-def set_white_balanced(setpoint: float = 4200):
-    """
-    Define o valor do balanço de branco ideal
-    Args:
-        setpoint (flaot): Temperatura ideal de 2400 até 9900 K
-    """
-    ...
-
-def has_white_pixels(frame):
-    """
-    Args:
-        frame (image):
-        threshold ():
-    Returns:
-        True se houver pixels brancos no frame, False caso contrário.
-    """
-    ...
-
-
-def find_white_pixels():
-    """
-    Verifique se existem pixels brancos no frame e 
-    retorna a região com pixels brancos.
-    Args:
-        frame (image):
-        threshold ():
-    Returns:
-        ret, region_white tuple(bool, frame):
-    """
-
 
 def rgb_to_xyz(RGB):
     """
     Args:
     Returns:
     """
-    return skimage.color.rgb2xyz(RGB)
-
-def get_percentilewhite():
-    """
-    Args:
-    Returns:
-    """
     ...
 
-
-def get_diff_setpoint():
-    """
-    Args:
-    Returns:
-    """
-    ...
-
-def plot_histogram(frame):
-    """
-    Args:
-        frame:
-    """
-    plt.figure(figsize= (10, 6))
-    plt.title("Histograma RGB")
-    color = ('b','g','r')
-
-    for i,col in enumerate(color):
-        histr = cv.calcHist([frame],[i],None,[256],[0,256])
-        plt.plot(histr,color = col)
-        plt.xlim([0,256])
-    plt.plot(data = frame)
-    plt.show()
-
-
-def background_subtraction():
-    """
-    Args:
-    Returns:
-    """
-    ...
-
-def object_detection():
-    """
-    Args:
-    Returns:
-    """
-    ...
-
-def location_highlights():
-    """
-    Args:
-    Returns:
-    """
-    ...
-
-def core_processing():
-    """
-    Args:
-    Returns:
-    """
-    ...
-
-
-def plot_balanced_frame():
-    """
-    Args:
-    Returns:
-    """
-    ...
-
-def set_white_balanced(setpoint: float = 4200):
+def set_white_balanced(setpoint: float):
     """
     Define o valor do balanço de branco ideal
     Args:
@@ -254,7 +156,7 @@ def plot_balanced_frame():
     """
     ...
 
-def color_temperature_McCamy(RGB: None):
+def color_temperature_McCamy(RGB):
     """
     Args:
     Returns:
@@ -262,8 +164,6 @@ def color_temperature_McCamy(RGB: None):
     """
 
     R, G, B = RGB
-
-    x, y, z = rgb_to_xyz(RGB=RGB)
     x = (0.4124564 * R + 0.3575761 * G + 0.1804375 * B) / (0.4124564 * R + 0.3575761 * G + 0.1804375 * B + 0.0886726 * R + 0.7151522 * G + 0.1109909 * B)
     y = (0.2126729 * R + 0.7151522 * G + 0.0721750 * B) / (0.2126729 * R + 0.7151522 * G + 0.0721750 * B + 0.0858420 * R + 0.5000000 * G + 0.0092100 * B)
 
@@ -292,12 +192,4 @@ def balance_white(frame):
     return image_wb
 
 if __name__ == '__main__':
-    r = 256
-    g = 256
-    b = 256
-
-    for i in range(255, r):
-        for j in range(1, g):
-            for k in range(1, b):
-                RGB = (i, j, k)
-                print(f"R G B {RGB} -> {color_temperature_McCamy(RGB)} K")
+    ...
