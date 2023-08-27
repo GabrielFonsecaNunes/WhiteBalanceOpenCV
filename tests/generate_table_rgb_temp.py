@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
+# Source Data Scraping Url 
 url = "http://www.vendian.org/mncharity/dir3/blackbody/UnstableURLs/bbr_color.html"
 
 response = requests.get(url)
@@ -84,14 +85,14 @@ def process_spans(spans, filter_threshold=None):
 
     return pd.DataFrame(data=rgb_temp_dict)
 
-# df_full = process_spans(spans)
-# df_full.to_csv("./data/conversion_rgb_temp_full.csv", sep=";", index=False, index_label="")
+df_full = process_spans(spans)
+df_full.to_csv("./resources/data/conversion_rgb_temp_full.csv", sep=";", index=False, index_label="")
 
 df_filtered = process_spans(spans, filter_threshold=6600)
-df_filtered.to_csv("./data/conversion_rgb_temp_6600.csv", sep=";", index=False, index_label="")
+df_filtered.to_csv("./resources/data/conversion_rgb_temp_6600.csv", sep=";", index=False, index_label="")
 
-# df_filtered = process_spans(spans, filter_threshold=15000)
-# df_filtered.to_csv("./data/conversion_rgb_temp_6600_15000.csv", sep=";", index=False, index_label="")
+df_filtered = process_spans(spans, filter_threshold=15000)
+df_filtered.to_csv("./resources/data/conversion_rgb_temp_6600_15000.csv", sep=";", index=False, index_label="")
 
-# df_filtered = process_spans(spans, filter_threshold=15000)
-# df_filtered.to_csv("./data/conversion_rgb_temp_15000.csv", sep=";", index=False, index_label="")
+df_filtered = process_spans(spans, filter_threshold=15000)
+df_filtered.to_csv("./resources/data/conversion_rgb_temp_15000.csv", sep=";", index=False, index_label="")
