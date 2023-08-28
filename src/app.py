@@ -50,6 +50,5 @@ def run():
 #     cam.release()
 #     cv.destroyAllWindows()
 
-
 if __name__ == '__main__':
     run()
