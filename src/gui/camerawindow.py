@@ -10,10 +10,11 @@ class CameraWindow(QWidget):
 
         # Receive from the fisrt camera available
         self.camera = cv2.VideoCapture(0)
-
+        
         self.label = QLabel(self)
         layout = QVBoxLayout()
         layout.addWidget(self.label)
+        layout.setSpacing(20)
         self.setLayout(layout)
 
         # Define Time update to Img (30 FPS)
@@ -27,6 +28,6 @@ class CameraWindow(QWidget):
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame_rgb = cv2.resize(frame_rgb, (720, 480))
             h, w, ch = frame_rgb.shape
-            image = QImage(frame_rgb.data, w, h, ch * w, QImage.Format_RGB888)
+            image = QImage(frame_rgb.data, w, h, ch * w, QImage.Format_RGB888) # type: ignore
             pixmap = QPixmap.fromImage(image)
             self.label.setPixmap(pixmap)
