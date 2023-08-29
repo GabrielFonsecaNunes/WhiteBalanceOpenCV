@@ -108,16 +108,16 @@ def plot_histogram(frame):
     Args:
         frame:
     """
-    # plt.figure(figsize= (10, 6))
-    # plt.title("Histograma RGB")
-    # color = ('b','g','r')
+    plt.figure(figsize= (10, 6))
+    plt.title("Histograma RGB")
+    color = ('b','g','r')
 
-    # for i,col in enumerate(color):
-    #     histr = cv.calcHist([frame],[i],None,[256],[0,256])
-    #     plt.plot(histr,color = col)
-    #     plt.xlim([0,256])
-    # plt.plot(data = frame)
-    # plt.show()
+    for i,col in enumerate(color):
+        histr = cv.calcHist([frame],[i],None,[256],[0,256])
+        plt.plot(histr,color = col)
+        plt.xlim([0,256])
+    plt.plot(data = frame)
+    plt.show()
 
 
 def background_subtraction():

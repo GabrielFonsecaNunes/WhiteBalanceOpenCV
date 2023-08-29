@@ -1,3 +1,4 @@
+import cv2 as cv
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QPalette, QLinearGradient, QColor, QPainter
 from camerawindow import CameraWindow
@@ -35,7 +36,6 @@ class TemplateLayout(QVBoxLayout):
 
         self.temp_box_layout = QHBoxLayout()
         self.temp_box_layout.setSpacing(10)
-        # self.temp_box_layout.addWidget(self.temp_label)
         self.temp_box_layout.addWidget(self.temp_box)
         self.temp_box_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter)
         
@@ -125,8 +125,19 @@ class TemplateLayout(QVBoxLayout):
 
         # Connect Wigets Callback
         self.slider.valueChanged.connect(self.slider_value_changed)
+        self.button_capture_temp.clicked.connect(self.capture_temperature_image)
     
     def slider_value_changed(self, value):
         self.temp_box.setText(str(value))
         temperature = value
         print(f"Temperature: {temperature} K")
+
+    def capture_temperature_image(self):
+        filename = f"./resources/tmp/img.jpg" 
+
+        # Capture the current frame from the camera
+        ret, frame = self.camera.camera.read()
+
+        if ret:
+            # Save the frame as a JPEG image
+            cv.imwrite(filename, frame)

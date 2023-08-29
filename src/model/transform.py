@@ -86,7 +86,7 @@ class Transform:
         return img_rgb
 
 if __name__ == '__main__':
-    img_path = "./resources/img/avatar1.jpeg"
+    img_path = "./resources/img/avatar2.jpg"
     img = cv.imread(img_path)
     img = cv.GaussianBlur(img, (3, 3), 1)
 
