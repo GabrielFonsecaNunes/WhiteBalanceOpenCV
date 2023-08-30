@@ -45,7 +45,7 @@ class TrainModelRegressor:
 
 if __name__ == "__main__":
     # Load Conversion DataFrame RGB TEMPERATURE KELVIN
-    df = pd.read_csv("./resources/data/conversion_rgb_temp_full.csv", sep=";")
+    df = pd.read_csv("./resources/data/conversion_rgb_temp_15000.csv", sep=";")
     X_train = df.loc[:, ["b", "g", "r"]].values
     Y_train = df.loc[:, ["Temperature [K]"]].values
 
@@ -76,11 +76,11 @@ if __name__ == "__main__":
 
     # Model Regressor X: R G B predict -> Y: Temperature Kelvin
     model_regressor = RandomForestRegressor(
-                                            n_estimators= 18, 
-                                            max_depth= 10, 
-                                            min_samples_split = 7, 
-                                            min_impurity_decrease= 0.04905946910151222,
-                                            n_jobs=-1
+                            n_estimators= 18, 
+                            max_depth= 10, 
+                            min_samples_split = 7, 
+                            min_impurity_decrease= 0.04905946910151222,
+                            n_jobs=-1
                     )
     
     # # Training Model Regressor 

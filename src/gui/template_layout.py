@@ -1,4 +1,5 @@
 import cv2 as cv
+import numpy as np
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QPalette, QLinearGradient, QColor, QPainter
 from .camerawindow import CameraWindow
@@ -146,7 +147,7 @@ class TemplateLayout(QVBoxLayout):
         """
         """
         transform = Transform(frame=frame)
-        img_temp = transform.BGR2TEMP()
+        img_temp = transform.BGR2TEMP().reshape(-1, 1)
         return img_temp.min()
 
     def capture_temperature_image(self):
@@ -165,3 +166,4 @@ class TemplateLayout(QVBoxLayout):
 
             # Update the slider value
             self.slider.setValue(slider_value)
+    
