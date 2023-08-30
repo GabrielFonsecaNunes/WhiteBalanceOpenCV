@@ -1,4 +1,4 @@
-from template_layout import TemplateLayout
+from .template_layout import TemplateLayout
 from PySide6.QtWidgets import (
         QApplication, 
         QMainWindow, 
@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         
 if __name__ == '__main__':
     app = QApplication([])
-    # app.setStyleSheet(load_stylesheet("light"))
+    app.setStyleSheet(load_stylesheet("light"))
     window = MainWindow()
     window.show()
     app.exec()

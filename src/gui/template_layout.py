@@ -1,7 +1,8 @@
 import cv2 as cv
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QPalette, QLinearGradient, QColor, QPainter
-from camerawindow import CameraWindow
+from .camerawindow import CameraWindow
+
 from PySide6.QtWidgets import (
     QVBoxLayout, 
     QHBoxLayout, 
@@ -10,6 +11,9 @@ from PySide6.QtWidgets import (
     QLineEdit,
     QPushButton
 )
+
+from ..transform.train_model_regressor import TrainModelRegressor
+from ..transform.transform import Transform
 
 class TemplateLayout(QVBoxLayout):
     def __init__(self):
@@ -132,6 +136,19 @@ class TemplateLayout(QVBoxLayout):
         temperature = value
         print(f"Temperature: {temperature} K")
 
+    def calculate_slider_value(self, temperature):
+        # Calculate the slider value based on the temperature
+        # Modify this calculation according to your needs
+        slider_value = temperature
+        return slider_value
+    
+    def calculate_color_temperature(self, frame):
+        """
+        """
+        transform = Transform(frame=frame)
+        img_temp = transform.BGR2TEMP()
+        return img_temp.min()
+
     def capture_temperature_image(self):
         filename = f"./resources/tmp/img.jpg" 
 
@@ -141,3 +158,10 @@ class TemplateLayout(QVBoxLayout):
         if ret:
             # Save the frame as a JPEG image
             cv.imwrite(filename, frame)
+            color_temperature = self.calculate_color_temperature(frame)
+
+            # Calculate the slider value based on the color temperature
+            slider_value = self.calculate_slider_value(color_temperature)
+
+            # Update the slider value
+            self.slider.setValue(slider_value)
