@@ -11,7 +11,7 @@ Ubuntu Linux:
 > python3 -m venv white_balanced_venv
 
 Antes de rodar o projeto, faça a instalação da bibliotecas através:
-> pip install -r requeriments.txt
+> pip install -r requirements.txt
 
 Equipe:
 
